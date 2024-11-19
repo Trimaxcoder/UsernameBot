@@ -61,6 +61,15 @@ const professions = [
     "Social Worker", "Trainer", "Veteran", "Waiter", "Writer", "Translator", "Artist", "Baker", "Carter", "Clerk"
 ];
 
+/**
+ * Calculates the total possible combinations based on the selected type.
+ * 
+ * @param {number} type - The type of combination to calculate:
+ *  - 1: Adjective + Noun
+ *  - 2: Adjective + Noun + Number
+ *  - 3: Profession + Number
+ * @returns {number} - The total number of possible combinations.
+ */
 const totalCombinations = (type) => {
     if (type === 1) return adjectives.length * nouns.length; // Adjective + Noun
     if (type === 2) return adjectives.length * nouns.length * 1000; // Adjective + Noun + Number
@@ -68,9 +77,25 @@ const totalCombinations = (type) => {
     return 0;
 };
 
+/**
+ * Validates if the input array is a valid non-empty array.
+ * 
+ * @param {Array} array - The array to validate.
+ * @returns {boolean} - True if the array is valid and non-empty, false otherwise.
+ */
 const isValidArray = (array) => Array.isArray(array) && array.length > 0;
 
-// Function to generate random username based on the current combination type
+/**
+ * Generates a random username based on adjectives, nouns, professions, and numbers.
+ * 
+ * The username can be in one of the following formats:
+ *  - Type 1: Adjective + Noun (e.g., "HappyTiger")
+ *  - Type 2: Adjective + Noun + Number (e.g., "CheerfulLion123")
+ *  - Type 3: Profession + Number (e.g., "Teacher456")
+ * 
+ * @throws {Error} - Throws an error if the adjective, noun, or profession arrays are invalid or empty.
+ * @returns {string} - The randomly generated username.
+ */
 const createUsername = () => {
     const totalType1 = totalCombinations(1);
     const totalType2 = totalCombinations(2);
@@ -106,3 +131,50 @@ const createUsername = () => {
 };
 
 module.exports = createUsername;
+
+
+// const totalCombinations = (type) => {
+//     if (type === 1) return adjectives.length * nouns.length; // Adjective + Noun
+//     if (type === 2) return adjectives.length * nouns.length * 1000; // Adjective + Noun + Number
+//     if (type === 3) return professions.length * 1000; // Profession + Number
+//     return 0;
+// };
+
+// const isValidArray = (array) => Array.isArray(array) && array.length > 0;
+
+// // Function to generate random username based on the current combination type
+// const createUsername = () => {
+//     const totalType1 = totalCombinations(1);
+//     const totalType2 = totalCombinations(2);
+//     const totalType3 = totalCombinations(3);
+
+//     if (!isValidArray(adjectives) || !isValidArray(nouns) || !isValidArray(professions)) {
+//         throw new Error("Adjectives, nouns, or professions array is empty or invalid.");
+//     }
+
+//     // Randomly select username type
+//     const type = Math.floor(Math.random() * 3) + 1;
+
+//     let username = '';
+//     if (type === 1) {
+//         const randomIndex = Math.floor(Math.random() * totalType1);
+//         const adjIndex = Math.floor(randomIndex / nouns.length);
+//         const nounIndex = randomIndex % nouns.length;
+//         username = `${adjectives[adjIndex]}${nouns[nounIndex]}`;
+//     } else if (type === 2) {
+//         const randomIndex = Math.floor(Math.random() * totalType2);
+//         const adjIndex = Math.floor(randomIndex / (nouns.length * 1000));
+//         const nounIndex = Math.floor((randomIndex % (nouns.length * 1000)) / 1000);
+//         const number = randomIndex % 1000;
+//         username = `${adjectives[adjIndex]}${nouns[nounIndex]}${number}`;
+//     } else {
+//         const randomIndex = Math.floor(Math.random() * totalType3);
+//         const professionIndex = Math.floor(randomIndex / 1000);
+//         const number = randomIndex % 1000;
+//         username = `${professions[professionIndex]}${number}`;
+//     }
+
+//     return username;
+// };
+
+// module.exports = createUsername;
