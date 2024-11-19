@@ -19,6 +19,7 @@ To use this package, install it via npm or clone the repository:
 
 # Usage
 to import in your file use the code below
+
 **const createUsername = require('usernamebot');**
 
 to Generate a random username use the code below
@@ -28,23 +29,25 @@ to Generate a random username use the code below
 OR
 
 **const username = createUsername();**
-**console.log(username);**  
+
+**console.log(username);**
+
 - Example output: "BoldRabbit47"
 
 # Username Formats
-Type 1: Adjective + Noun
+**Type 1: Adjective + Noun**
 
 Combines an adjective and a noun from predefined lists.
 
 Example: HappyTiger
 
-Type 2: Adjective + Noun + Number
+**Type 2: Adjective + Noun + Number**
 
 Adds a random 3-digit number to an adjective and a noun.
 
 Example: CheerfulLion123
 
-Type 3: Profession + Number
+**Type 3: Profession + Number**
 
 Combines a profession and a random 3-digit number.
 
